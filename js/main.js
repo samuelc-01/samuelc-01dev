@@ -430,13 +430,15 @@ function initLanguage() {
   }
 }
 
-/** Submete o formulário de contato via fetch (Netlify Forms) sem recarregar a página. */
+/** Submete o formulário de contato via FormSubmit (entrega no email do dono). */
 function initContactForm() {
   const form = document.querySelector('.contact-form');
   if (!form) return;
 
   const status = form.querySelector('.form-status');
   const emailInput = form.querySelector('#cf-email');
+  const subjectSelect = form.querySelector('#cf-assunto');
+  const subjectField = form.querySelector('#cf-subject');
 
   const showStatus = (msg, type) => {
     status.textContent = msg;
@@ -458,9 +460,6 @@ function initContactForm() {
     }
     if (!isValidEmail(emailValue)) {
       showStatus(I18N[currentLang].formInvalidEmail, 'is-error');
-      emailInput.setCustomValidity(I18N[currentLang].formInvalidEmail);
-      emailInput.reportValidity();
-      emailInput.setCustomValidity('');
       emailInput.focus();
       return;
     }
@@ -472,15 +471,35 @@ function initContactForm() {
     submitBtn.textContent = I18N[currentLang].formSend + '...';
     showStatus('');
 
+    // Preenche o _subject a partir da opção escolhida no select
+    if (subjectSelect && subjectField) {
+      subjectField.value = subjectSelect.options[subjectSelect.selectedIndex]
+        ? subjectSelect.options[subjectSelect.selectedIndex].text
+        : '';
+    }
+
+    // Monta o payload JSON para o endpoint AJAX do FormSubmit
+    const payload = {
+      name: form.elements['name'] ? form.elements['name'].value.trim() : '',
+      email: emailValue,
+      subject: subjectSelect ? subjectSelect.options[subjectSelect.selectedIndex].text : '',
+      message: form.elements['message'] ? form.elements['message'].value.trim() : '',
+      _template: 'table',
+      _captcha: 'false'
+    };
+
     try {
-      const body = new FormData(form);
-      const res = await fetch('/', { method: 'POST', body, headers: { 'Accept': 'application/x-www-form-urlencoded, text/plain, */*' } });
+      const res = await fetch(form.action.replace(/\/$/, '') + '/ajax', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(payload)
+      });
 
       if (res.ok) {
         form.reset();
         showStatus(I18N[currentLang].formStatusSuccess, 'is-success');
       } else {
-        throw new Error('Netlify form error');
+        throw new Error('FormSubmit error');
       }
     } catch (err) {
       showStatus(I18N[currentLang].formStatusError, 'is-error');
