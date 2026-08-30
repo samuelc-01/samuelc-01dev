@@ -112,9 +112,48 @@ function initScrollReveal() {
   revealEls.forEach(el => observer.observe(el));
 }
 
+function initSectionNavigation() {
+  const sections = [...document.querySelectorAll('main section[id]')];
+  const dockLinks = [...document.querySelectorAll('.dock-link[data-section]')];
+  if (!sections.length || !dockLinks.length) return;
+
+  const setActiveSection = (sectionId) => {
+    dockLinks.forEach(link => {
+      const isActive = link.dataset.section === sectionId;
+      link.classList.toggle('is-active', isActive);
+      if (isActive) link.setAttribute('aria-current', 'location');
+      else link.removeAttribute('aria-current');
+    });
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    const visibleEntry = entries
+      .filter(entry => entry.isIntersecting)
+      .sort((first, second) => second.intersectionRatio - first.intersectionRatio)[0];
+
+    if (visibleEntry) setActiveSection(visibleEntry.target.id);
+  }, { rootMargin: '-30% 0px -55%', threshold: [0.05, 0.25, 0.5] });
+
+  sections.forEach(section => observer.observe(section));
+}
+
+function initScrollProgress() {
+  const updateProgress = () => {
+    const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = scrollableHeight > 0 ? (window.scrollY / scrollableHeight) * 100 : 0;
+    document.documentElement.style.setProperty('--scroll-progress', `${Math.min(progress, 100)}%`);
+  };
+
+  updateProgress();
+  window.addEventListener('scroll', updateProgress, { passive: true });
+  window.addEventListener('resize', updateProgress);
+}
+
 function init() {
   initTerminal();
   initScrollReveal();
+  initSectionNavigation();
+  initScrollProgress();
 }
 
 document.addEventListener('DOMContentLoaded', init);
