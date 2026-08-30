@@ -243,6 +243,24 @@ const I18N = {
     contactCommand: './contact.exe <span>--channel=direct</span>',
     contactTitle: 'Vamos construir algo juntos?',
     contactText: 'Estou disponível para novos projetos freelance e oportunidades full stack. Envie uma mensagem ou me chame nas redes.',
+    formName: 'Nome',
+    formNamePh: 'Seu nome',
+    formEmail: 'Email',
+    formEmailPh: 'voce@email.com',
+    formEmailTitle: 'Digite um email válido (ex.: nome@dominio.com)',
+    formInvalidEmail: 'Por favor, insira um email válido.',
+    formSubject: 'Assunto',
+    formSubjectPlaceholder: 'Escolha um assunto...',
+    optLearning: 'Aprendizado',
+    optCareer: 'Carreira',
+    optService: 'Serviço / Projeto',
+    optContact: 'Contato',
+    optOther: 'Outro',
+    formMsg: 'Mensagem',
+    formMsgPh: 'Escreva sua mensagem...',
+    formSend: 'Enviar mensagem',
+    formStatusError: 'Não foi possível enviar. Verifique os campos e tente novamente.',
+    formStatusSuccess: 'Mensagem enviada! Obrigado pelo contato, retorno em breve.',
     footerLine: '© 2026 Samuel Cristian',
     mobileDockAbout: 'sobre',
     mobileDockStack: 'stack',
@@ -327,6 +345,24 @@ const I18N = {
     contactCommand: './contact.exe <span>--channel=direct</span>',
     contactTitle: 'Let\'s build something together?',
     contactText: 'I\'m available for new freelance projects and full stack opportunities. Send me a message or reach out on social media.',
+    formName: 'Name',
+    formNamePh: 'Your name',
+    formEmail: 'Email',
+    formEmailPh: 'you@email.com',
+    formEmailTitle: 'Enter a valid email (e.g. name@domain.com)',
+    formInvalidEmail: 'Please enter a valid email.',
+    formSubject: 'Subject',
+    formSubjectPlaceholder: 'Choose a subject...',
+    optLearning: 'Learning',
+    optCareer: 'Career',
+    optService: 'Service / Project',
+    optContact: 'Contact',
+    optOther: 'Other',
+    formMsg: 'Message',
+    formMsgPh: 'Write your message...',
+    formSend: 'Send message',
+    formStatusError: 'Could not send. Please try again or reach me by email.',
+    formStatusSuccess: 'Message sent! Thanks for reaching out, I\'ll get back to you soon.',
     footerLine: '© 2026 Samuel Cristian',
     mobileDockAbout: 'about',
     mobileDockStack: 'stack',
@@ -363,6 +399,18 @@ function applyLanguage(lang) {
     if (value != null && el.innerHTML !== value) el.innerHTML = value;
   });
 
+  document.querySelectorAll('[data-i18n-ph]').forEach(el => {
+    const key = el.getAttribute('data-i18n-ph');
+    const value = dict[key];
+    if (value != null && el.placeholder !== value) el.placeholder = value;
+  });
+
+  document.querySelectorAll('[data-i18n-title]').forEach(el => {
+    const key = el.getAttribute('data-i18n-title');
+    const value = dict[key];
+    if (value != null && el.title !== value) el.title = value;
+  });
+
   const toggle = document.querySelector('.lang-toggle');
   if (toggle) {
     toggle.textContent = dict.flag;
@@ -382,12 +430,74 @@ function initLanguage() {
   }
 }
 
+/** Submete o formulário de contato via fetch (Netlify Forms) sem recarregar a página. */
+function initContactForm() {
+  const form = document.querySelector('.contact-form');
+  if (!form) return;
+
+  const status = form.querySelector('.form-status');
+  const emailInput = form.querySelector('#cf-email');
+
+  const showStatus = (msg, type) => {
+    status.textContent = msg;
+    status.classList.remove('is-error', 'is-success');
+    if (type) status.classList.add(type);
+  };
+
+  const isValidEmail = (value) => /^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$/.test(value);
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    // Validação de email no frontend
+    const emailValue = emailInput.value.trim();
+    if (!emailValue) {
+      showStatus(I18N[currentLang].formInvalidEmail, 'is-error');
+      emailInput.focus();
+      return;
+    }
+    if (!isValidEmail(emailValue)) {
+      showStatus(I18N[currentLang].formInvalidEmail, 'is-error');
+      emailInput.setCustomValidity(I18N[currentLang].formInvalidEmail);
+      emailInput.reportValidity();
+      emailInput.setCustomValidity('');
+      emailInput.focus();
+      return;
+    }
+
+    const submitBtn = form.querySelector('.form-submit');
+    const originalText = submitBtn.textContent;
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = I18N[currentLang].formSend + '...';
+    showStatus('');
+
+    try {
+      const body = new FormData(form);
+      const res = await fetch('/', { method: 'POST', body, headers: { 'Accept': 'application/x-www-form-urlencoded, text/plain, */*' } });
+
+      if (res.ok) {
+        form.reset();
+        showStatus(I18N[currentLang].formStatusSuccess, 'is-success');
+      } else {
+        throw new Error('Netlify form error');
+      }
+    } catch (err) {
+      showStatus(I18N[currentLang].formStatusError, 'is-error');
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = originalText;
+    }
+  });
+}
+
 function init() {
   initLanguage();
   initTerminal();
   initScrollReveal();
   initSectionNavigation();
   initScrollProgress();
+  initContactForm();
 }
 
 document.addEventListener('DOMContentLoaded', init);

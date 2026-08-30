@@ -986,6 +986,95 @@ section:not(.hero)::before{
 
 .contact-command span{ color: var(--text-muted); }
 
+.contact-form{
+  margin: 0 0 36px;
+  max-width: 520px;
+}
+.form-field{
+  margin-bottom: 18px;
+}
+.form-field label{
+  display: block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+.form-field input,
+.form-field textarea,
+.form-field select{
+  width: 100%;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13.5px;
+  color: var(--text);
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 12px 14px;
+  transition: border-color .15s ease, box-shadow .15s ease;
+}
+.form-field input:focus,
+.form-field textarea:focus,
+.form-field select:focus{
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent-dim);
+}
+.form-field select{
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--text-muted) 50%),
+    linear-gradient(135deg, var(--text-muted) 50%, transparent 50%);
+  background-position:
+    calc(100% - 21px) 50%,
+    calc(100% - 14px) 50%;
+  background-size: 7px 7px;
+  background-repeat: no-repeat;
+  padding-right: 40px;
+}
+.form-field select option{
+  background: var(--surface);
+  color: var(--text);
+}
+.form-field select:invalid,
+.form-field select option[value=""]{
+  color: var(--text-muted);
+}
+.form-field textarea{
+  resize: vertical;
+  min-height: 110px;
+}
+.form-field input::placeholder,
+.form-field textarea::placeholder{
+  color: var(--text-muted);
+  opacity: .6;
+}
+.form-submit{
+  cursor: pointer;
+  border: none;
+  width: 100%;
+  justify-content: center;
+}
+.form-submit:disabled{
+  opacity: .6;
+  cursor: not-allowed;
+  transform: none;
+}
+.form-status{
+  margin: 14px 0 0;
+  font-size: 13px;
+  min-height: 18px;
+}
+.form-status.is-error{ color: #ff6b6b; }
+.form-status.is-success{ color: var(--accent); }
+.contact-form .hidden{ display: none; }
+
+
 @media (max-width: 1120px){
   .section-dock{ display: none; }
 }

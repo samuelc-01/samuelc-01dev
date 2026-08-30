@@ -224,6 +224,44 @@
         <p class="contact-command" data-i18n-html="contactCommand">./contact.exe <span>--channel=direct</span></p>
         <h2 data-i18n="contactTitle">Vamos construir algo juntos?</h2>
         <p data-i18n="contactText">Estou disponível para novos projetos freelance e oportunidades full stack. Envie uma mensagem ou me chame nas redes.</p>
+
+        <form id="contact-form" class="contact-form" action="https://formsubmit.co/samuelc.01dev@gmail.com" method="POST">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_subject" id="cf-subject" value="Contato do portfolio">
+          <div class="form-field">
+            <label for="cf-nome" data-i18n="formName">Nome</label>
+            <input id="cf-nome" name="name" type="text" required data-i18n-ph="formNamePh" placeholder="Seu nome">
+          </div>
+          <div class="form-field">
+            <label for="cf-email" data-i18n="formEmail">Email</label>
+            <input id="cf-email" name="email" type="email" required
+                   inputmode="email"
+                   autocomplete="email"
+                   pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}"
+                   title="Digite um email válido (ex.: nome@dominio.com)"
+                   data-i18n-title="formEmailTitle"
+                   data-i18n-ph="formEmailPh" placeholder="voce@email.com">
+          </div>
+          <div class="form-field">
+            <label for="cf-assunto" data-i18n="formSubject">Assunto</label>
+            <select id="cf-assunto" name="subject" required>
+              <option value="" disabled selected data-i18n="formSubjectPlaceholder">Escolha um assunto...</option>
+              <option value="Aprendizado" data-i18n="optLearning">Aprendizado</option>
+              <option value="Carreira" data-i18n="optCareer">Carreira</option>
+              <option value="Serviço / Projeto" data-i18n="optService">Serviço / Projeto</option>
+              <option value="Contato" data-i18n="optContact">Contato</option>
+              <option value="Outro" data-i18n="optOther">Outro</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label for="cf-msg" data-i18n="formMsg">Mensagem</label>
+            <textarea id="cf-msg" name="message" rows="5" required data-i18n-ph="formMsgPh" placeholder="Escreva sua mensagem..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary form-submit" data-i18n="formSend">Enviar mensagem</button>
+          <p class="form-status" role="status" aria-live="polite"></p>
+        </form>
+
         <div class="contact-links">
           <a href="mailto:samuelc.01dev@gmail.com" class="btn btn-primary">samuelc.01dev@gmail.com</a>
           <a href="https://github.com/samuelc-01" target="_blank" rel="noopener" class="btn btn-ghost">GitHub</a>
