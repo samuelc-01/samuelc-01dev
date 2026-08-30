@@ -9,12 +9,20 @@
  * Ambos respeitam prefers-reduced-motion.
  */
 
-const TERMINAL_LINES = [
-  { cmd: 'whoami', out: '<b>Samuel Cristian dos Santos</b> — Full Stack Developer' },
-  { cmd: 'cat foco.txt', out: 'Software limpo, escalável e aprendizado contínuo.' },
-  { cmd: 'ls stack/', out: 'react  next  node  typescript  postgresql  docker' },
-  { cmd: 'echo $DIFERENCIAL', out: 'dev + infra de TI + eletrônica aplicada' }
-];
+const TERMINAL_LINES = {
+  pt: [
+    { cmd: 'whoami', out: '<b>Samuel Cristian dos Santos</b> — Full Stack Developer' },
+    { cmd: 'cat foco.txt', out: 'Software limpo, escalável e aprendizado contínuo.' },
+    { cmd: 'ls stack/', out: 'react  next  node  typescript  postgresql  docker' },
+    { cmd: 'echo $DIFERENCIAL', out: 'dev + infra de TI + eletrônica aplicada' }
+  ],
+  en: [
+    { cmd: 'whoami', out: '<b>Samuel Cristian dos Santos</b> — Full Stack Developer' },
+    { cmd: 'cat focus.txt', out: 'Clean, scalable software and continuous learning.' },
+    { cmd: 'ls stack/', out: 'react  next  node  typescript  postgresql  docker' },
+    { cmd: 'echo $DIFFERENTIAL', out: 'dev + IT infra + applied electronics' }
+  ]
+};
 
 const TYPE_SPEED_MS = 32;
 const LINE_PAUSE_MS = 260;
@@ -24,20 +32,20 @@ function prefersReducedMotion() {
 }
 
 /** Renderiza todas as linhas do terminal de uma vez (sem animação). */
-function renderTerminalInstant(container) {
-  container.innerHTML = TERMINAL_LINES.map(line =>
+function renderTerminalInstant(container, lines) {
+  container.innerHTML = lines.map(line =>
     `<div class="ln"><span class="prompt">$</span> ${line.cmd}<span class="out">${line.out}</span></div>`
   ).join('');
 }
 
 /** Digita as linhas do terminal uma a uma, com cursor piscando. */
-function typeTerminalLines(container) {
+function typeTerminalLines(container, lines) {
   let lineIndex = 0;
 
   function typeNextLine() {
-    if (lineIndex >= TERMINAL_LINES.length) return;
+    if (lineIndex >= lines.length) return;
 
-    const { cmd, out } = TERMINAL_LINES[lineIndex];
+    const { cmd, out } = lines[lineIndex];
 
     const lineEl = document.createElement('div');
     lineEl.className = 'ln';
@@ -84,9 +92,9 @@ function initTerminal() {
   if (!container) return;
 
   if (prefersReducedMotion()) {
-    renderTerminalInstant(container);
+    renderTerminalInstant(container, TERMINAL_LINES[currentLang]);
   } else {
-    typeTerminalLines(container);
+    typeTerminalLines(container, TERMINAL_LINES[currentLang]);
   }
 }
 
@@ -112,6 +120,7 @@ function initScrollReveal() {
   revealEls.forEach(el => observer.observe(el));
 }
 
+<<<<<<< Updated upstream
 function initSectionNavigation() {
   const sections = [...document.querySelectorAll('main section[id]')];
   const dockLinks = [...document.querySelectorAll('.dock-link[data-section]')];
@@ -147,9 +156,190 @@ function initScrollProgress() {
   updateProgress();
   window.addEventListener('scroll', updateProgress, { passive: true });
   window.addEventListener('resize', updateProgress);
+=======
+/* ===================== i18n — PT / EN ===================== */
+
+const I18N = {
+  pt: {
+    langCode: 'pt-BR',
+    next: 'en',
+    flag: '🇬🇧',
+    aria: 'Switch to English',
+    metaTitle: 'Samuel Cristian — Full Stack Developer & IoT',
+    metaDescription: 'Samuel Cristian dos Santos — Desenvolvedor Full Stack (Node.js, React, TypeScript) com formação em eletrônica e automação. Divinópolis, MG.',
+    navAbout: '~/sobre',
+    navStack: '~/stack',
+    navProjects: '~/projetos',
+    navExperience: '~/experiência',
+    navCta: 'Vamos conversar',
+    heroBadge: 'Divinópolis, BR · Disponível para novos projetos',
+    heroRole: 'Full Stack Developer — <b>Node.js · React · TypeScript</b> — com formação técnica em eletrônica',
+    heroText: 'Desenvolvo aplicações web de ponta a ponta e automatizo processos corporativos, unindo experiência de infraestrutura de TI com uma formação técnica em eletrônica. Gosto de projetos onde software encontra hardware.',
+    heroViewProjects: 'Ver projetos',
+    heroContact: 'Entrar em contato',
+    aboutEyebrow: 'sobre',
+    aboutTitle: 'Software limpo, escalável e aprendizado contínuo',
+    aboutP1: 'Sou desenvolvedor full stack com experiência prática em Node.js, React e TypeScript, atuando também com infraestrutura de TI — Active Directory, Windows Server — e automação de processos com VBA.',
+    aboutP2: 'Minha formação técnica em eletrônica trouxe uma base sólida em microcontroladores, PLC e automação, que hoje aplico em projetos que conectam sensores, dados e interfaces web — como um sistema de monitoramento de vazamentos de água construído do zero.',
+    factLocation: 'Localização',
+    factLocationV: 'Divinópolis, MG — Brasil',
+    factRole: 'Atuação',
+    factRoleV: 'Freelance Full Stack Developer',
+    factDifferential: 'Diferencial',
+    factDifferentialV: 'Desenvolvimento + infraestrutura + eletrônica',
+    factLanguages: 'Idiomas',
+    factLanguagesV: 'Inglês profissional · Espanhol básico',
+    factEducation: 'Formação',
+    factEducationV: 'Rocketseat Ignite · Técnico em Eletrônica (Senai)',
+    stackEyebrow: 'stack',
+    stackTitle: 'Ferramentas do dia a dia',
+    stackFrontend: 'Frontend',
+    stackBackend: 'Backend',
+    stackData: 'Dados',
+    stackInfra: 'Infra & Automação',
+    stackElectronics: 'Eletrônica',
+    expEyebrow: 'experiência',
+    expTitle: 'Trajetória profissional',
+    expRole1: 'Full Stack Developer',
+    expPlace1a: 'Freelance',
+    expRemote: 'Remoto',
+    expDesc1: 'Interfaces com React.js/Next.js e APIs com Node.js, gerenciando dados em SQL, além de automação de relatórios corporativos com VBA.',
+    expRole2: 'Analista de TI',
+    expDesc2: 'Suporte a usuários e gerenciamento de servidores e Active Directory, além de responsável pelos marketplaces da empresa e por novas soluções tecnológicas.',
+    expRole3: 'Full Stack Developer',
+    expDesc3: 'Aplicações web com React.js, Next.js e Node.js; APIs REST/GraphQL com autenticação JWT e foco em escalabilidade e boas práticas (SOLID).',
+    expRole4: 'Estágio em Desenvolvimento',
+    expDesc4: 'Apoio ao desenvolvedor sênior em Flutter, evoluindo de tarefas simples a implementações mais complexas.',
+    projEyebrow: 'projetos',
+    projTitle: 'Trabalhos recentes',
+    projDesc1: 'API em Node.js que processa dados de sensores de vazão de água e os exibe em dashboards configuráveis — projeto que une eletrônica e desenvolvimento web.',
+    projDesc2: 'Firmware em C++ para leitura de sensores de vazão em microcontrolador, responsável por capturar e enviar os dados usados no dashboard.',
+    projDesc3: 'Aplicação para acompanhar assinaturas e gastos recorrentes, com foco em uma interface simples e objetiva.',
+    projDesc4: 'API construída em TypeScript com foco em boas práticas de autenticação e segurança de dados.',
+    projTagDashboard: 'Dashboard',
+    projTagSensors: 'Sensores',
+    projTagWebApp: 'Web App',
+    projTagAuth: 'Auth',
+    contactTitle: 'Vamos construir algo juntos?',
+    contactText: 'Estou disponível para novos projetos freelance e oportunidades full stack. Envie uma mensagem ou me chame nas redes.',
+    footerLine: '© 2026 Samuel Cristian — feito com HTML, CSS & JS puro.'
+  },
+  en: {
+    langCode: 'en',
+    next: 'pt',
+    flag: '🇧🇷',
+    aria: 'Mudar para português',
+    metaTitle: 'Samuel Cristian — Full Stack Developer & IoT',
+    metaDescription: 'Samuel Cristian dos Santos — Full Stack Developer (Node.js, React, TypeScript) with a background in electronics and automation. Divinópolis, MG.',
+    navAbout: '~/about',
+    navStack: '~/stack',
+    navProjects: '~/projects',
+    navExperience: '~/experience',
+    navCta: 'Let\'s talk',
+    heroBadge: 'Divinópolis, BR · Available for new projects',
+    heroRole: 'Full Stack Developer — <b>Node.js · React · TypeScript</b> — with technical training in electronics',
+    heroText: 'I build end-to-end web applications and automate business processes, combining IT infrastructure experience with a technical background in electronics. I love projects where software meets hardware.',
+    heroViewProjects: 'View projects',
+    heroContact: 'Get in touch',
+    aboutEyebrow: 'about',
+    aboutTitle: 'Clean, scalable software and continuous learning',
+    aboutP1: 'I\'m a full stack developer with hands-on experience in Node.js, React and TypeScript, also working with IT infrastructure — Active Directory, Windows Server — and process automation with VBA.',
+    aboutP2: 'My technical background in electronics gave me a solid foundation in microcontrollers, PLCs and automation, which I now apply in projects connecting sensors, data and web interfaces — like a water leak monitoring system built from scratch.',
+    factLocation: 'Location',
+    factLocationV: 'Divinópolis, MG — Brazil',
+    factRole: 'Role',
+    factRoleV: 'Freelance Full Stack Developer',
+    factDifferential: 'Differentiator',
+    factDifferentialV: 'Development + infrastructure + electronics',
+    factLanguages: 'Languages',
+    factLanguagesV: 'Professional English · Basic Spanish',
+    factEducation: 'Education',
+    factEducationV: 'Rocketseat Ignite · Electronics Technician (Senai)',
+    stackEyebrow: 'stack',
+    stackTitle: 'Daily tools',
+    stackFrontend: 'Frontend',
+    stackBackend: 'Backend',
+    stackData: 'Data',
+    stackInfra: 'Infra & Automation',
+    stackElectronics: 'Electronics',
+    expEyebrow: 'experience',
+    expTitle: 'Professional journey',
+    expRole1: 'Full Stack Developer',
+    expPlace1a: 'Freelance',
+    expRemote: 'Remote',
+    expDesc1: 'Interfaces with React.js/Next.js and APIs with Node.js, managing data in SQL, plus automation of corporate reports with VBA.',
+    expRole2: 'IT Analyst',
+    expDesc2: 'User support and management of servers and Active Directory, also responsible for the company\'s marketplaces and new technology solutions.',
+    expRole3: 'Full Stack Developer',
+    expDesc3: 'Web applications with React.js, Next.js and Node.js; REST/GraphQL APIs with JWT authentication and a focus on scalability and best practices (SOLID).',
+    expRole4: 'Development Intern',
+    expDesc4: 'Supporting the senior developer in Flutter, evolving from simple tasks to more complex implementations.',
+    projEyebrow: 'projects',
+    projTitle: 'Recent work',
+    projDesc1: 'Node.js API that processes water flow sensor data and displays it in configurable dashboards — a project that combines electronics and web development.',
+    projDesc2: 'C++ firmware for reading flow sensors on a microcontroller, responsible for capturing and sending the data used in the dashboard.',
+    projDesc3: 'An app to track subscriptions and recurring expenses, focused on a simple and objective interface.',
+    projDesc4: 'API built in TypeScript focused on good authentication and data security practices.',
+    projTagDashboard: 'Dashboard',
+    projTagSensors: 'Sensors',
+    projTagWebApp: 'Web App',
+    projTagAuth: 'Auth',
+    contactTitle: 'Let\'s build something together?',
+    contactText: 'I\'m available for new freelance projects and full stack opportunities. Send me a message or reach out on social media.',
+    footerLine: '© 2026 Samuel Cristian — built with pure HTML, CSS & JS.'
+  }
+};
+
+const LANG_STORAGE_KEY = 'samuel-portfolio-lang';
+let currentLang = localStorage.getItem(LANG_STORAGE_KEY) || 'pt';
+if (!I18N[currentLang]) currentLang = 'pt';
+
+/** Aplica o idioma escolhido a todo o conteúdo da página. */
+function applyLanguage(lang) {
+  currentLang = lang;
+  const dict = I18N[lang];
+
+  document.documentElement.lang = dict.langCode;
+  document.title = dict.metaTitle;
+
+  document.querySelectorAll('meta[data-i18n]').forEach(meta => {
+    meta.setAttribute('content', dict[meta.getAttribute('data-i18n')]);
+  });
+
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    const value = dict[key];
+    if (value != null && el.textContent !== value) el.textContent = value;
+  });
+
+  document.querySelectorAll('[data-i18n-html]').forEach(el => {
+    const key = el.getAttribute('data-i18n-html');
+    const value = dict[key];
+    if (value != null && el.innerHTML !== value) el.innerHTML = value;
+  });
+
+  const toggle = document.querySelector('.lang-toggle');
+  if (toggle) {
+    toggle.textContent = dict.flag;
+    toggle.setAttribute('data-lang', dict.next);
+    toggle.setAttribute('aria-label', dict.aria);
+  }
+
+  localStorage.setItem(LANG_STORAGE_KEY, lang);
+}
+
+function initLanguage() {
+  applyLanguage(currentLang);
+
+  const toggle = document.querySelector('.lang-toggle');
+  if (toggle) {
+    toggle.addEventListener('click', () => applyLanguage(I18N[currentLang].next));
+  }
+>>>>>>> Stashed changes
 }
 
 function init() {
+  initLanguage();
   initTerminal();
   initScrollReveal();
   initSectionNavigation();

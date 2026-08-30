@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Samuel Cristian — Full Stack Developer & IoT</title>
-  <meta name="description" content="Samuel Cristian dos Santos — Desenvolvedor Full Stack (Node.js, React, TypeScript) com formação em eletrônica e automação. Divinópolis, MG.">
+  <title data-i18n="metaTitle">Samuel Cristian — Full Stack Developer & IoT</title>
+  <meta name="description" content="Samuel Cristian dos Santos — Desenvolvedor Full Stack (Node.js, React, TypeScript) com formação em eletrônica e automação. Divinópolis, MG." data-i18n="metaDescription">
 
   <meta property="og:title" content="Samuel Cristian — Full Stack Developer & IoT">
   <meta property="og:description" content="Desenvolvedor Full Stack com experiência em Node.js, React, TypeScript e automação/eletrônica.">
@@ -33,30 +33,39 @@
   <nav class="wrap">
     <a href="#home" class="brand"><span class="cursor">&gt;_</span> samuel<span class="brand-file">/main.ts</span></a>
     <div class="nav-links">
-      <a href="#sobre">~/sobre</a>
-      <a href="#stack">~/stack</a>
-      <a href="#projetos">~/projetos</a>
-      <a href="#experiencia">~/experiência</a>
+      <a href="#sobre" data-i18n="navAbout">~/sobre</a>
+      <a href="#stack" data-i18n="navStack">~/stack</a>
+      <a href="#projetos" data-i18n="navProjects">~/projetos</a>
+      <a href="#experiencia" data-i18n="navExperience">~/experiência</a>
     </div>
-    <a href="#contato" class="nav-cta">Vamos conversar</a>
+    <div class="nav-right">
+      <button class="lang-toggle" type="button" aria-label="Switch to English" data-lang="en">🇬🇧</button>
+      <a href="#contato" class="nav-cta" data-i18n="navCta">Vamos conversar</a>
+    </div>
   </nav>
 </header>
 
 <main>
   <section class="hero" id="home">
     <div class="wrap">
+<<<<<<< Updated upstream
       <p class="system-line"><span>SYS.PROFILE</span><span>FULL_STACK + IOT</span><span>STATUS: ONLINE</span></p>
       <span class="badge"><span class="dot"></span>Divinópolis, BR · Disponível para novos projetos</span>
       <p class="hero-intro">Olá, eu sou <strong>Samuel Cristian dos Santos</strong>.</p>
       <h1>Construindo entre <span>software</span> e mundo físico.</h1>
       <p class="role">Full Stack Developer — <b>Node.js · React · TypeScript</b> — com formação técnica em eletrônica</p>
+=======
+      <span class="badge"><span class="dot"></span><span data-i18n="heroBadge">Divinópolis, BR · Disponível para novos projetos</span></span>
+      <h1>Samuel Cristian <span>dos Santos</span></h1>
+      <p class="role"><span data-i18n-html="heroRole">Full Stack Developer — <b>Node.js · React · TypeScript</b> — com formação técnica em eletrônica</span></p>
+>>>>>>> Stashed changes
 
       <div class="hero-grid">
         <div class="hero-text reveal">
-          <p>Desenvolvo aplicações web de ponta a ponta e automatizo processos corporativos, unindo experiência de infraestrutura de TI com uma formação técnica em eletrônica. Gosto de projetos onde software encontra hardware.</p>
+          <p data-i18n="heroText">Desenvolvo aplicações web de ponta a ponta e automatizo processos corporativos, unindo experiência de infraestrutura de TI com uma formação técnica em eletrônica. Gosto de projetos onde software encontra hardware.</p>
           <div class="hero-actions">
-            <a href="#projetos" class="btn btn-primary">Ver projetos</a>
-            <a href="#contato" class="btn btn-ghost">Entrar em contato</a>
+            <a href="#projetos" class="btn btn-primary" data-i18n="heroViewProjects">Ver projetos</a>
+            <a href="#contato" class="btn btn-ghost" data-i18n="heroContact">Entrar em contato</a>
           </div>
           <dl class="hero-stats" aria-label="Resumo profissional">
             <div><dt>04+</dt><dd>anos criando soluções</dd></div>
@@ -78,19 +87,24 @@
 
   <section id="sobre">
     <div class="wrap">
+<<<<<<< Updated upstream
       <p class="eyebrow">about.md</p>
       <h2 class="section-title">Software limpo, escalável e aprendizado contínuo</h2>
+=======
+      <p class="eyebrow" data-i18n="aboutEyebrow">sobre</p>
+      <h2 class="section-title" data-i18n="aboutTitle">Software limpo, escalável e aprendizado contínuo</h2>
+>>>>>>> Stashed changes
       <div class="about-grid">
         <div class="reveal">
-          <p>Sou desenvolvedor full stack com experiência prática em Node.js, React e TypeScript, atuando também com infraestrutura de TI — Active Directory, Windows Server — e automação de processos com VBA.</p>
-          <p>Minha formação técnica em eletrônica trouxe uma base sólida em microcontroladores, PLC e automação, que hoje aplico em projetos que conectam sensores, dados e interfaces web — como um sistema de monitoramento de vazamentos de água construído do zero.</p>
+          <p data-i18n="aboutP1">Sou desenvolvedor full stack com experiência prática em Node.js, React e TypeScript, atuando também com infraestrutura de TI — Active Directory, Windows Server — e automação de processos com VBA.</p>
+          <p data-i18n="aboutP2">Minha formação técnica em eletrônica trouxe uma base sólida em microcontroladores, PLC e automação, que hoje aplico em projetos que conectam sensores, dados e interfaces web — como um sistema de monitoramento de vazamentos de água construído do zero.</p>
         </div>
         <ul class="facts reveal">
-          <li><b>Localização</b> Divinópolis, MG — Brasil</li>
-          <li><b>Atuação</b> Freelance Full Stack Developer</li>
-          <li><b>Diferencial</b> Desenvolvimento + infraestrutura + eletrônica</li>
-          <li><b>Idiomas</b> Inglês profissional · Espanhol básico</li>
-          <li><b>Formação</b> Rocketseat Ignite · Técnico em Eletrônica (Senai)</li>
+          <li><b data-i18n="factLocation">Localização</b> <span data-i18n="factLocationV">Divinópolis, MG — Brasil</span></li>
+          <li><b data-i18n="factRole">Atuação</b> <span data-i18n="factRoleV">Freelance Full Stack Developer</span></li>
+          <li><b data-i18n="factDifferential">Diferencial</b> <span data-i18n="factDifferentialV">Desenvolvimento + infraestrutura + eletrônica</span></li>
+          <li><b data-i18n="factLanguages">Idiomas</b> <span data-i18n="factLanguagesV">Inglês profissional · Espanhol básico</span></li>
+          <li><b data-i18n="factEducation">Formação</b> <span data-i18n="factEducationV">Rocketseat Ignite · Técnico em Eletrônica (Senai)</span></li>
         </ul>
       </div>
     </div>
@@ -98,23 +112,41 @@
 
   <section id="stack">
     <div class="wrap">
+<<<<<<< Updated upstream
       <p class="eyebrow">skills.json</p>
       <h2 class="section-title">Ferramentas do dia a dia</h2>
       <div class="stack-grid reveal">
         <div class="stack-cell" data-index="01">
           <h3>Frontend</h3>
+=======
+      <p class="eyebrow" data-i18n="stackEyebrow">stack</p>
+      <h2 class="section-title" data-i18n="stackTitle">Ferramentas do dia a dia</h2>
+      <div class="stack-grid reveal">
+        <div class="stack-cell">
+          <h3 data-i18n="stackFrontend">Frontend</h3>
+>>>>>>> Stashed changes
           <div class="tags">
             <span class="tag">React.js</span><span class="tag">Next.js</span><span class="tag">TypeScript</span><span class="tag">Flutter</span>
           </div>
         </div>
+<<<<<<< Updated upstream
         <div class="stack-cell" data-index="02">
           <h3>Backend</h3>
+=======
+        <div class="stack-cell">
+          <h3 data-i18n="stackBackend">Backend</h3>
+>>>>>>> Stashed changes
           <div class="tags">
             <span class="tag">Node.js</span><span class="tag">Express</span><span class="tag">REST</span><span class="tag">GraphQL</span><span class="tag">JWT</span>
           </div>
         </div>
+<<<<<<< Updated upstream
         <div class="stack-cell" data-index="03">
           <h3>Dados</h3>
+=======
+        <div class="stack-cell">
+          <h3 data-i18n="stackData">Dados</h3>
+>>>>>>> Stashed changes
           <div class="tags">
             <span class="tag">PostgreSQL</span><span class="tag">MongoDB</span>
           </div>
@@ -125,14 +157,24 @@
             <span class="tag">Docker</span><span class="tag">CI/CD</span><span class="tag">Git</span>
           </div>
         </div>
+<<<<<<< Updated upstream
         <div class="stack-cell" data-index="05">
           <h3>Infra & Automação</h3>
+=======
+        <div class="stack-cell">
+          <h3 data-i18n="stackInfra">Infra & Automação</h3>
+>>>>>>> Stashed changes
           <div class="tags">
             <span class="tag">Active Directory</span><span class="tag">Windows Server</span><span class="tag">VBA</span>
           </div>
         </div>
+<<<<<<< Updated upstream
         <div class="stack-cell" data-index="06">
           <h3>Eletrônica</h3>
+=======
+        <div class="stack-cell">
+          <h3 data-i18n="stackElectronics">Eletrônica</h3>
+>>>>>>> Stashed changes
           <div class="tags">
             <span class="tag">C++</span><span class="tag">PLC</span><span class="tag">ESP32</span><span class="tag">Microcontroladores</span>
           </div>
@@ -143,32 +185,37 @@
 
   <section id="experiencia">
     <div class="wrap">
+<<<<<<< Updated upstream
       <p class="eyebrow">git log --career</p>
       <h2 class="section-title">Trajetória profissional</h2>
+=======
+      <p class="eyebrow" data-i18n="expEyebrow">experiência</p>
+      <h2 class="section-title" data-i18n="expTitle">Trajetória profissional</h2>
+>>>>>>> Stashed changes
       <div class="timeline">
         <article class="tl-item reveal" data-hash="a8f25c">
           <p class="tl-date">Jun 2025 — Presente</p>
-          <h3 class="tl-role">Full Stack Developer</h3>
-          <p class="tl-place">Freelance · Remoto</p>
-          <p>Interfaces com React.js/Next.js e APIs com Node.js, gerenciando dados em SQL, além de automação de relatórios corporativos com VBA.</p>
+          <h3 class="tl-role" data-i18n="expRole1">Full Stack Developer</h3>
+          <p class="tl-place"><span data-i18n="expPlace1a">Freelance</span> · <span data-i18n="expRemote">Remoto</span></p>
+          <p data-i18n="expDesc1">Interfaces com React.js/Next.js e APIs com Node.js, gerenciando dados em SQL, além de automação de relatórios corporativos com VBA.</p>
         </article>
         <article class="tl-item reveal" data-hash="7d31ba">
           <p class="tl-date">Set 2023 — Out 2024</p>
-          <h3 class="tl-role">Analista de TI</h3>
+          <h3 class="tl-role" data-i18n="expRole2">Analista de TI</h3>
           <p class="tl-place">Haoma · Divinópolis/MG</p>
-          <p>Suporte a usuários e gerenciamento de servidores e Active Directory, além de responsável pelos marketplaces da empresa e por novas soluções tecnológicas.</p>
+          <p data-i18n="expDesc2">Suporte a usuários e gerenciamento de servidores e Active Directory, além de responsável pelos marketplaces da empresa e por novas soluções tecnológicas.</p>
         </article>
         <article class="tl-item reveal" data-hash="3f92e1">
           <p class="tl-date">Jun 2022 — Out 2024</p>
-          <h3 class="tl-role">Full Stack Developer</h3>
-          <p class="tl-place">Freelance · Remoto</p>
-          <p>Aplicações web com React.js, Next.js e Node.js; APIs REST/GraphQL com autenticação JWT e foco em escalabilidade e boas práticas (SOLID).</p>
+          <h3 class="tl-role" data-i18n="expRole3">Full Stack Developer</h3>
+          <p class="tl-place"><span data-i18n="expPlace1a">Freelance</span> · <span data-i18n="expRemote">Remoto</span></p>
+          <p data-i18n="expDesc3">Aplicações web com React.js, Next.js e Node.js; APIs REST/GraphQL com autenticação JWT e foco em escalabilidade e boas práticas (SOLID).</p>
         </article>
         <article class="tl-item reveal" data-hash="0c17de">
           <p class="tl-date">Mar 2022 — Out 2022</p>
-          <h3 class="tl-role">Estágio em Desenvolvimento</h3>
+          <h3 class="tl-role" data-i18n="expRole4">Estágio em Desenvolvimento</h3>
           <p class="tl-place">Visi Soluções Integradas · Divinópolis/MG</p>
-          <p>Apoio ao desenvolvedor sênior em Flutter, evoluindo de tarefas simples a implementações mais complexas.</p>
+          <p data-i18n="expDesc4">Apoio ao desenvolvedor sênior em Flutter, evoluindo de tarefas simples a implementações mais complexas.</p>
         </article>
       </div>
     </div>
@@ -176,40 +223,45 @@
 
   <section id="projetos">
     <div class="wrap">
+<<<<<<< Updated upstream
       <p class="eyebrow">ls -la ~/projects</p>
       <h2 class="section-title">Trabalhos recentes</h2>
+=======
+      <p class="eyebrow" data-i18n="projEyebrow">projetos</p>
+      <h2 class="section-title" data-i18n="projTitle">Trabalhos recentes</h2>
+>>>>>>> Stashed changes
       <div class="proj-grid">
         <article class="proj-card proj-featured reveal" data-project="01">
           <div class="proj-top">
             <div><span class="repo-state">PUBLIC · FEATURED</span><h3>Water Leak Monitoring</h3></div>
             <a class="proj-link" href="https://github.com/samuelc-01/water-leak-monitoring" target="_blank" rel="noopener">GitHub ↗</a>
           </div>
-          <p>API em Node.js que processa dados de sensores de vazão de água e os exibe em dashboards configuráveis — projeto que une eletrônica e desenvolvimento web.</p>
-          <div class="proj-tags"><span>Node.js</span><span>IoT</span><span>Dashboard</span></div>
+          <p data-i18n="projDesc1">API em Node.js que processa dados de sensores de vazão de água e os exibe em dashboards configuráveis — projeto que une eletrônica e desenvolvimento web.</p>
+          <div class="proj-tags"><span>Node.js</span><span>IoT</span><span data-i18n="projTagDashboard">Dashboard</span></div>
         </article>
         <article class="proj-card reveal" data-project="02">
           <div class="proj-top">
             <div><span class="repo-state">PUBLIC · FIRMWARE</span><h3>Water Monitor — Hardware</h3></div>
             <a class="proj-link" href="https://github.com/samuelc-01/Water-monitor-hardware" target="_blank" rel="noopener">GitHub ↗</a>
           </div>
-          <p>Firmware em C++ para leitura de sensores de vazão em microcontrolador, responsável por capturar e enviar os dados usados no dashboard.</p>
-          <div class="proj-tags"><span>C++</span><span>Arduino/ESP32</span><span>Sensores</span></div>
+          <p data-i18n="projDesc2">Firmware em C++ para leitura de sensores de vazão em microcontrolador, responsável por capturar e enviar os dados usados no dashboard.</p>
+          <div class="proj-tags"><span>C++</span><span>Arduino/ESP32</span><span data-i18n="projTagSensors">Sensores</span></div>
         </article>
         <article class="proj-card reveal" data-project="03">
           <div class="proj-top">
             <div><span class="repo-state">PUBLIC · WEB APP</span><h3>Sub Tracker</h3></div>
             <a class="proj-link" href="https://github.com/samuelc-01/sub-tracker" target="_blank" rel="noopener">GitHub ↗</a>
           </div>
-          <p>Aplicação para acompanhar assinaturas e gastos recorrentes, com foco em uma interface simples e objetiva.</p>
-          <div class="proj-tags"><span>JavaScript</span><span>Web App</span></div>
+          <p data-i18n="projDesc3">Aplicação para acompanhar assinaturas e gastos recorrentes, com foco em uma interface simples e objetiva.</p>
+          <div class="proj-tags"><span>JavaScript</span><span data-i18n="projTagWebApp">Web App</span></div>
         </article>
         <article class="proj-card reveal" data-project="04">
           <div class="proj-top">
             <div><span class="repo-state">PUBLIC · API</span><h3>Secure API</h3></div>
             <a class="proj-link" href="https://github.com/samuelc-01/secureAPI" target="_blank" rel="noopener">GitHub ↗</a>
           </div>
-          <p>API construída em TypeScript com foco em boas práticas de autenticação e segurança de dados.</p>
-          <div class="proj-tags"><span>TypeScript</span><span>Auth</span><span>API</span></div>
+          <p data-i18n="projDesc4">API construída em TypeScript com foco em boas práticas de autenticação e segurança de dados.</p>
+          <div class="proj-tags"><span>TypeScript</span><span data-i18n="projTagAuth">Auth</span><span>API</span></div>
         </article>
       </div>
     </div>
@@ -218,9 +270,14 @@
   <section id="contato">
     <div class="wrap">
       <div class="contact-box reveal">
+<<<<<<< Updated upstream
         <p class="contact-command">./contact.exe <span>--channel=direct</span></p>
         <h2>Vamos construir algo juntos?</h2>
         <p>Estou disponível para novos projetos freelance e oportunidades full stack. Envie uma mensagem ou me chame nas redes.</p>
+=======
+        <h2 data-i18n="contactTitle">Vamos construir algo juntos?</h2>
+        <p data-i18n="contactText">Estou disponível para novos projetos freelance e oportunidades full stack. Envie uma mensagem ou me chame nas redes.</p>
+>>>>>>> Stashed changes
         <div class="contact-links">
           <a href="mailto:samuelc.01dev@gmail.com" class="btn btn-primary">samuelc.01dev@gmail.com</a>
           <a href="https://github.com/samuelc-01" target="_blank" rel="noopener" class="btn btn-ghost">GitHub</a>
@@ -233,7 +290,7 @@
 
 <footer>
   <div class="wrap">
-    <span>© 2026 Samuel Cristian — feito com HTML, CSS &amp; JS puro.</span>
+    <span><span data-i18n-html="footerLine">© 2026 Samuel Cristian — feito com HTML, CSS &amp; JS puro.</span></span>
     <span>Divinópolis, MG · Brasil</span>
   </div>
 </footer>
