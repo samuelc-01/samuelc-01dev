@@ -438,7 +438,6 @@ function initContactForm() {
   const status = form.querySelector('.form-status');
   const emailInput = form.querySelector('#cf-email');
   const subjectSelect = form.querySelector('#cf-assunto');
-  const subjectField = form.querySelector('#cf-subject');
 
   const showStatus = (msg, type) => {
     status.textContent = msg;
@@ -447,6 +446,15 @@ function initContactForm() {
   };
 
   const isValidEmail = (value) => /^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$/.test(value);
+
+  // Garante que a página esteja sendo servida por um servidor web (não abrir como arquivo).
+  if (typeof window !== 'undefined' && window.location.protocol === 'file:') {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      showStatus('Abra o site por um servidor (localhost) para enviar a mensagem.', 'is-error');
+    });
+    return;
+  }
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -471,31 +479,45 @@ function initContactForm() {
     submitBtn.textContent = I18N[currentLang].formSend + '...';
     showStatus('');
 
-    // Preenche o _subject a partir da opção escolhida no select
-    if (subjectSelect && subjectField) {
-      subjectField.value = subjectSelect.options[subjectSelect.selectedIndex]
-        ? subjectSelect.options[subjectSelect.selectedIndex].text
-        : '';
-    }
+    const chosenOption = subjectSelect && subjectSelect.selectedIndex > -1
+      ? subjectSelect.options[subjectSelect.selectedIndex]
+      : null;
 
-    // Monta o payload JSON para o endpoint AJAX do FormSubmit
     const payload = {
       name: form.elements['name'] ? form.elements['name'].value.trim() : '',
       email: emailValue,
-      subject: subjectSelect ? subjectSelect.options[subjectSelect.selectedIndex].text : '',
+      subject: chosenOption ? chosenOption.text : '',
       message: form.elements['message'] ? form.elements['message'].value.trim() : '',
       _template: 'table',
       _captcha: 'false'
     };
 
+    // Endpoint AJAX do FormSubmit: formsubmit.co/ajax/<email-dono>
+    // O form.action = https://formsubmit.co/<email>; extraímos o email.
+    const ownerEmail = form.action.substring(form.action.lastIndexOf('/') + 1);
+    const ajaxUrl = 'https://formsubmit.co/ajax/' + ownerEmail;
+
     try {
-      const res = await fetch(form.action.replace(/\/$/, '') + '/ajax', {
+      const res = await fetch(ajaxUrl, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify(payload)
       });
 
-      if (res.ok) {
+      // FormSubmit responde HTTP 200 mesmo em falha — checamos o corpo também.
+      let ok = res.ok;
+      let data = null;
+      try {
+        data = await res.json();
+      } catch (_) {
+        data = null;
+      }
+
+      if (data && data.success === 'false') {
+        ok = false;
+      }
+
+      if (ok) {
         form.reset();
         showStatus(I18N[currentLang].formStatusSuccess, 'is-success');
       } else {
