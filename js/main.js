@@ -261,6 +261,7 @@ const I18N = {
     formSend: 'Enviar mensagem',
     formStatusError: 'Não foi possível enviar. Verifique os campos e tente novamente.',
     formStatusSuccess: 'Mensagem enviada! Obrigado pelo contato, retorno em breve.',
+    formStatusActivation: 'O formulário ainda não foi ativado: confira seu email (inclua a caixa de spam) e clique no link "Activate Form" para começar a receber as mensagens.',
     footerLine: '© 2026 Samuel Cristian',
     mobileDockAbout: 'sobre',
     mobileDockStack: 'stack',
@@ -363,6 +364,7 @@ const I18N = {
     formSend: 'Send message',
     formStatusError: 'Could not send. Please try again or reach me by email.',
     formStatusSuccess: 'Message sent! Thanks for reaching out, I\'ll get back to you soon.',
+    formStatusActivation: 'The form has not been activated yet: check your inbox (and spam folder) and click the "Activate Form" link to start receiving messages.',
     footerLine: '© 2026 Samuel Cristian',
     mobileDockAbout: 'about',
     mobileDockStack: 'stack',
@@ -507,6 +509,7 @@ function initContactForm() {
       // FormSubmit responde HTTP 200 mesmo em falha — checamos o corpo também.
       let ok = res.ok;
       let data = null;
+      let needsActivation = false;
       try {
         data = await res.json();
       } catch (_) {
@@ -515,11 +518,17 @@ function initContactForm() {
 
       if (data && data.success === 'false') {
         ok = false;
+        const msg = (data.message || '').toLowerCase();
+        if (msg.includes('activation') || msg.includes('activate')) {
+          needsActivation = true;
+        }
       }
 
       if (ok) {
         form.reset();
         showStatus(I18N[currentLang].formStatusSuccess, 'is-success');
+      } else if (needsActivation) {
+        showStatus(I18N[currentLang].formStatusActivation, 'is-error');
       } else {
         throw new Error('FormSubmit error');
       }
