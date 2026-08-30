@@ -2,11 +2,14 @@
  * Samuel Cristian — Portfolio
  * main.js
  *
- * Responsável por dois comportamentos de UI:
+ * Responsável por:
  *  1. Efeito de "digitação" no terminal do hero
  *  2. Reveal de elementos ao rolar a página (IntersectionObserver)
+ *  3. Navegação lateral (section-dock) com destaque da seção ativa
+ *  4. Barra de progresso de rolagem
+ *  5. Tradução PT/EN (i18n)
  *
- * Ambos respeitam prefers-reduced-motion.
+ * Todos os comportamentos respeitam prefers-reduced-motion.
  */
 
 const TERMINAL_LINES = {
@@ -120,7 +123,7 @@ function initScrollReveal() {
   revealEls.forEach(el => observer.observe(el));
 }
 
-<<<<<<< Updated upstream
+/** Destaca o link do dock correspondente à seção visível na tela. */
 function initSectionNavigation() {
   const sections = [...document.querySelectorAll('main section[id]')];
   const dockLinks = [...document.querySelectorAll('.dock-link[data-section]')];
@@ -146,6 +149,7 @@ function initSectionNavigation() {
   sections.forEach(section => observer.observe(section));
 }
 
+/** Atualiza a barra de progresso de rolagem do topo. */
 function initScrollProgress() {
   const updateProgress = () => {
     const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
@@ -156,7 +160,8 @@ function initScrollProgress() {
   updateProgress();
   window.addEventListener('scroll', updateProgress, { passive: true });
   window.addEventListener('resize', updateProgress);
-=======
+}
+
 /* ===================== i18n — PT / EN ===================== */
 
 const I18N = {
@@ -167,17 +172,27 @@ const I18N = {
     aria: 'Switch to English',
     metaTitle: 'Samuel Cristian — Full Stack Developer & IoT',
     metaDescription: 'Samuel Cristian dos Santos — Desenvolvedor Full Stack (Node.js, React, TypeScript) com formação em eletrônica e automação. Divinópolis, MG.',
+    dockAbout: 'sobre',
+    dockStack: 'stack',
+    dockExperience: 'experiência',
+    dockProjects: 'projetos',
+    dockContact: 'contato',
     navAbout: '~/sobre',
     navStack: '~/stack',
     navProjects: '~/projetos',
     navExperience: '~/experiência',
     navCta: 'Vamos conversar',
     heroBadge: 'Divinópolis, BR · Disponível para novos projetos',
+    heroIntro: 'Olá, eu sou <strong>Samuel Cristian dos Santos</strong>.',
+    heroTitle: 'Construindo entre <span>software</span> e mundo físico.',
     heroRole: 'Full Stack Developer — <b>Node.js · React · TypeScript</b> — com formação técnica em eletrônica',
     heroText: 'Desenvolvo aplicações web de ponta a ponta e automatizo processos corporativos, unindo experiência de infraestrutura de TI com uma formação técnica em eletrônica. Gosto de projetos onde software encontra hardware.',
     heroViewProjects: 'Ver projetos',
     heroContact: 'Entrar em contato',
-    aboutEyebrow: 'sobre',
+    statYearsLabel: 'anos criando soluções',
+    statAreasLabel: 'áreas conectadas',
+    statCuriosityLabel: 'curiosidade técnica',
+    aboutEyebrow: 'about.md',
     aboutTitle: 'Software limpo, escalável e aprendizado contínuo',
     aboutP1: 'Sou desenvolvedor full stack com experiência prática em Node.js, React e TypeScript, atuando também com infraestrutura de TI — Active Directory, Windows Server — e automação de processos com VBA.',
     aboutP2: 'Minha formação técnica em eletrônica trouxe uma base sólida em microcontroladores, PLC e automação, que hoje aplico em projetos que conectam sensores, dados e interfaces web — como um sistema de monitoramento de vazamentos de água construído do zero.',
@@ -191,14 +206,15 @@ const I18N = {
     factLanguagesV: 'Inglês profissional · Espanhol básico',
     factEducation: 'Formação',
     factEducationV: 'Rocketseat Ignite · Técnico em Eletrônica (Senai)',
-    stackEyebrow: 'stack',
+    stackEyebrow: 'skills.json',
     stackTitle: 'Ferramentas do dia a dia',
     stackFrontend: 'Frontend',
     stackBackend: 'Backend',
     stackData: 'Dados',
+    stackDevOps: 'DevOps',
     stackInfra: 'Infra & Automação',
     stackElectronics: 'Eletrônica',
-    expEyebrow: 'experiência',
+    expEyebrow: 'git log --career',
     expTitle: 'Trajetória profissional',
     expRole1: 'Full Stack Developer',
     expPlace1a: 'Freelance',
@@ -210,8 +226,12 @@ const I18N = {
     expDesc3: 'Aplicações web com React.js, Next.js e Node.js; APIs REST/GraphQL com autenticação JWT e foco em escalabilidade e boas práticas (SOLID).',
     expRole4: 'Estágio em Desenvolvimento',
     expDesc4: 'Apoio ao desenvolvedor sênior em Flutter, evoluindo de tarefas simples a implementações mais complexas.',
-    projEyebrow: 'projetos',
+    projEyebrow: 'ls -la ~/projects',
     projTitle: 'Trabalhos recentes',
+    repoFeatured: 'PUBLIC · FEATURED',
+    repoFirmware: 'PUBLIC · FIRMWARE',
+    repoWebApp: 'PUBLIC · WEB APP',
+    repoApi: 'PUBLIC · API',
     projDesc1: 'API em Node.js que processa dados de sensores de vazão de água e os exibe em dashboards configuráveis — projeto que une eletrônica e desenvolvimento web.',
     projDesc2: 'Firmware em C++ para leitura de sensores de vazão em microcontrolador, responsável por capturar e enviar os dados usados no dashboard.',
     projDesc3: 'Aplicação para acompanhar assinaturas e gastos recorrentes, com foco em uma interface simples e objetiva.',
@@ -220,9 +240,14 @@ const I18N = {
     projTagSensors: 'Sensores',
     projTagWebApp: 'Web App',
     projTagAuth: 'Auth',
+    contactCommand: './contact.exe <span>--channel=direct</span>',
     contactTitle: 'Vamos construir algo juntos?',
     contactText: 'Estou disponível para novos projetos freelance e oportunidades full stack. Envie uma mensagem ou me chame nas redes.',
-    footerLine: '© 2026 Samuel Cristian — feito com HTML, CSS & JS puro.'
+    footerLine: '© 2026 Samuel Cristian',
+    mobileDockAbout: 'sobre',
+    mobileDockStack: 'stack',
+    mobileDockProjects: 'projetos',
+    mobileDockContact: 'contato'
   },
   en: {
     langCode: 'en',
@@ -231,17 +256,27 @@ const I18N = {
     aria: 'Mudar para português',
     metaTitle: 'Samuel Cristian — Full Stack Developer & IoT',
     metaDescription: 'Samuel Cristian dos Santos — Full Stack Developer (Node.js, React, TypeScript) with a background in electronics and automation. Divinópolis, MG.',
+    dockAbout: 'about',
+    dockStack: 'stack',
+    dockExperience: 'experience',
+    dockProjects: 'projects',
+    dockContact: 'contact',
     navAbout: '~/about',
     navStack: '~/stack',
     navProjects: '~/projects',
     navExperience: '~/experience',
     navCta: 'Let\'s talk',
     heroBadge: 'Divinópolis, BR · Available for new projects',
+    heroIntro: 'Hello, I\'m <strong>Samuel Cristian dos Santos</strong>.',
+    heroTitle: 'Building between <span>software</span> and the physical world.',
     heroRole: 'Full Stack Developer — <b>Node.js · React · TypeScript</b> — with technical training in electronics',
     heroText: 'I build end-to-end web applications and automate business processes, combining IT infrastructure experience with a technical background in electronics. I love projects where software meets hardware.',
     heroViewProjects: 'View projects',
     heroContact: 'Get in touch',
-    aboutEyebrow: 'about',
+    statYearsLabel: 'years building solutions',
+    statAreasLabel: 'connected areas',
+    statCuriosityLabel: 'technical curiosity',
+    aboutEyebrow: 'about.md',
     aboutTitle: 'Clean, scalable software and continuous learning',
     aboutP1: 'I\'m a full stack developer with hands-on experience in Node.js, React and TypeScript, also working with IT infrastructure — Active Directory, Windows Server — and process automation with VBA.',
     aboutP2: 'My technical background in electronics gave me a solid foundation in microcontrollers, PLCs and automation, which I now apply in projects connecting sensors, data and web interfaces — like a water leak monitoring system built from scratch.',
@@ -255,14 +290,15 @@ const I18N = {
     factLanguagesV: 'Professional English · Basic Spanish',
     factEducation: 'Education',
     factEducationV: 'Rocketseat Ignite · Electronics Technician (Senai)',
-    stackEyebrow: 'stack',
+    stackEyebrow: 'skills.json',
     stackTitle: 'Daily tools',
     stackFrontend: 'Frontend',
     stackBackend: 'Backend',
     stackData: 'Data',
+    stackDevOps: 'DevOps',
     stackInfra: 'Infra & Automation',
     stackElectronics: 'Electronics',
-    expEyebrow: 'experience',
+    expEyebrow: 'git log --career',
     expTitle: 'Professional journey',
     expRole1: 'Full Stack Developer',
     expPlace1a: 'Freelance',
@@ -274,8 +310,12 @@ const I18N = {
     expDesc3: 'Web applications with React.js, Next.js and Node.js; REST/GraphQL APIs with JWT authentication and a focus on scalability and best practices (SOLID).',
     expRole4: 'Development Intern',
     expDesc4: 'Supporting the senior developer in Flutter, evolving from simple tasks to more complex implementations.',
-    projEyebrow: 'projects',
+    projEyebrow: 'ls -la ~/projects',
     projTitle: 'Recent work',
+    repoFeatured: 'PUBLIC · FEATURED',
+    repoFirmware: 'PUBLIC · FIRMWARE',
+    repoWebApp: 'PUBLIC · WEB APP',
+    repoApi: 'PUBLIC · API',
     projDesc1: 'Node.js API that processes water flow sensor data and displays it in configurable dashboards — a project that combines electronics and web development.',
     projDesc2: 'C++ firmware for reading flow sensors on a microcontroller, responsible for capturing and sending the data used in the dashboard.',
     projDesc3: 'An app to track subscriptions and recurring expenses, focused on a simple and objective interface.',
@@ -284,9 +324,14 @@ const I18N = {
     projTagSensors: 'Sensors',
     projTagWebApp: 'Web App',
     projTagAuth: 'Auth',
+    contactCommand: './contact.exe <span>--channel=direct</span>',
     contactTitle: 'Let\'s build something together?',
     contactText: 'I\'m available for new freelance projects and full stack opportunities. Send me a message or reach out on social media.',
-    footerLine: '© 2026 Samuel Cristian — built with pure HTML, CSS & JS.'
+    footerLine: '© 2026 Samuel Cristian',
+    mobileDockAbout: 'about',
+    mobileDockStack: 'stack',
+    mobileDockProjects: 'projects',
+    mobileDockContact: 'contact'
   }
 };
 
@@ -335,7 +380,6 @@ function initLanguage() {
   if (toggle) {
     toggle.addEventListener('click', () => applyLanguage(I18N[currentLang].next));
   }
->>>>>>> Stashed changes
 }
 
 function init() {

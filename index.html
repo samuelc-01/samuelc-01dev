@@ -22,11 +22,11 @@
 
 <aside class="section-dock" aria-label="Navegação rápida">
   <a href="#home" class="dock-link is-active" data-section="home"><span>01</span><b>início</b></a>
-  <a href="#sobre" class="dock-link" data-section="sobre"><span>02</span><b>sobre</b></a>
-  <a href="#stack" class="dock-link" data-section="stack"><span>03</span><b>stack</b></a>
-  <a href="#experiencia" class="dock-link" data-section="experiencia"><span>04</span><b>experiência</b></a>
-  <a href="#projetos" class="dock-link" data-section="projetos"><span>05</span><b>projetos</b></a>
-  <a href="#contato" class="dock-link" data-section="contato"><span>06</span><b>contato</b></a>
+  <a href="#sobre" class="dock-link" data-section="sobre"><span>02</span><b data-i18n="dockAbout">sobre</b></a>
+  <a href="#stack" class="dock-link" data-section="stack"><span>03</span><b data-i18n="dockStack">stack</b></a>
+  <a href="#experiencia" class="dock-link" data-section="experiencia"><span>04</span><b data-i18n="dockExperience">experiência</b></a>
+  <a href="#projetos" class="dock-link" data-section="projetos"><span>05</span><b data-i18n="dockProjects">projetos</b></a>
+  <a href="#contato" class="dock-link" data-section="contato"><span>06</span><b data-i18n="dockContact">contato</b></a>
 </aside>
 
 <header>
@@ -48,17 +48,11 @@
 <main>
   <section class="hero" id="home">
     <div class="wrap">
-<<<<<<< Updated upstream
       <p class="system-line"><span>SYS.PROFILE</span><span>FULL_STACK + IOT</span><span>STATUS: ONLINE</span></p>
-      <span class="badge"><span class="dot"></span>Divinópolis, BR · Disponível para novos projetos</span>
-      <p class="hero-intro">Olá, eu sou <strong>Samuel Cristian dos Santos</strong>.</p>
-      <h1>Construindo entre <span>software</span> e mundo físico.</h1>
-      <p class="role">Full Stack Developer — <b>Node.js · React · TypeScript</b> — com formação técnica em eletrônica</p>
-=======
       <span class="badge"><span class="dot"></span><span data-i18n="heroBadge">Divinópolis, BR · Disponível para novos projetos</span></span>
-      <h1>Samuel Cristian <span>dos Santos</span></h1>
-      <p class="role"><span data-i18n-html="heroRole">Full Stack Developer — <b>Node.js · React · TypeScript</b> — com formação técnica em eletrônica</span></p>
->>>>>>> Stashed changes
+      <p class="hero-intro"><span data-i18n-html="heroIntro">Olá, eu sou <strong>Samuel Cristian dos Santos</strong>.</span></p>
+      <h1><span data-i18n-html="heroTitle">Construindo entre <span>software</span> e mundo físico.</span></h1>
+      <p class="role" data-i18n="heroRole">Full Stack Developer — <b>Node.js · React · TypeScript</b> — com formação técnica em eletrônica</p>
 
       <div class="hero-grid">
         <div class="hero-text reveal">
@@ -68,9 +62,9 @@
             <a href="#contato" class="btn btn-ghost" data-i18n="heroContact">Entrar em contato</a>
           </div>
           <dl class="hero-stats" aria-label="Resumo profissional">
-            <div><dt>04+</dt><dd>anos criando soluções</dd></div>
-            <div><dt>06</dt><dd>áreas conectadas</dd></div>
-            <div><dt>∞</dt><dd>curiosidade técnica</dd></div>
+            <div><dt>04+</dt><dd data-i18n="statYearsLabel">anos criando soluções</dd></div>
+            <div><dt>06</dt><dd data-i18n="statAreasLabel">áreas conectadas</dd></div>
+            <div><dt>∞</dt><dd data-i18n="statCuriosityLabel">curiosidade técnica</dd></div>
           </dl>
         </div>
 
@@ -87,13 +81,8 @@
 
   <section id="sobre">
     <div class="wrap">
-<<<<<<< Updated upstream
-      <p class="eyebrow">about.md</p>
-      <h2 class="section-title">Software limpo, escalável e aprendizado contínuo</h2>
-=======
-      <p class="eyebrow" data-i18n="aboutEyebrow">sobre</p>
+      <p class="eyebrow" data-i18n="aboutEyebrow">about.md</p>
       <h2 class="section-title" data-i18n="aboutTitle">Software limpo, escalável e aprendizado contínuo</h2>
->>>>>>> Stashed changes
       <div class="about-grid">
         <div class="reveal">
           <p data-i18n="aboutP1">Sou desenvolvedor full stack com experiência prática em Node.js, React e TypeScript, atuando também com infraestrutura de TI — Active Directory, Windows Server — e automação de processos com VBA.</p>
@@ -112,69 +101,41 @@
 
   <section id="stack">
     <div class="wrap">
-<<<<<<< Updated upstream
-      <p class="eyebrow">skills.json</p>
-      <h2 class="section-title">Ferramentas do dia a dia</h2>
-      <div class="stack-grid reveal">
-        <div class="stack-cell" data-index="01">
-          <h3>Frontend</h3>
-=======
-      <p class="eyebrow" data-i18n="stackEyebrow">stack</p>
+      <p class="eyebrow" data-i18n="stackEyebrow">skills.json</p>
       <h2 class="section-title" data-i18n="stackTitle">Ferramentas do dia a dia</h2>
       <div class="stack-grid reveal">
-        <div class="stack-cell">
+        <div class="stack-cell" data-index="01">
           <h3 data-i18n="stackFrontend">Frontend</h3>
->>>>>>> Stashed changes
           <div class="tags">
             <span class="tag">React.js</span><span class="tag">Next.js</span><span class="tag">TypeScript</span><span class="tag">Flutter</span>
           </div>
         </div>
-<<<<<<< Updated upstream
         <div class="stack-cell" data-index="02">
-          <h3>Backend</h3>
-=======
-        <div class="stack-cell">
           <h3 data-i18n="stackBackend">Backend</h3>
->>>>>>> Stashed changes
           <div class="tags">
             <span class="tag">Node.js</span><span class="tag">Express</span><span class="tag">REST</span><span class="tag">GraphQL</span><span class="tag">JWT</span>
           </div>
         </div>
-<<<<<<< Updated upstream
         <div class="stack-cell" data-index="03">
-          <h3>Dados</h3>
-=======
-        <div class="stack-cell">
           <h3 data-i18n="stackData">Dados</h3>
->>>>>>> Stashed changes
           <div class="tags">
             <span class="tag">PostgreSQL</span><span class="tag">MongoDB</span>
           </div>
         </div>
         <div class="stack-cell" data-index="04">
-          <h3>DevOps</h3>
+          <h3 data-i18n="stackDevOps">DevOps</h3>
           <div class="tags">
             <span class="tag">Docker</span><span class="tag">CI/CD</span><span class="tag">Git</span>
           </div>
         </div>
-<<<<<<< Updated upstream
         <div class="stack-cell" data-index="05">
-          <h3>Infra & Automação</h3>
-=======
-        <div class="stack-cell">
           <h3 data-i18n="stackInfra">Infra & Automação</h3>
->>>>>>> Stashed changes
           <div class="tags">
             <span class="tag">Active Directory</span><span class="tag">Windows Server</span><span class="tag">VBA</span>
           </div>
         </div>
-<<<<<<< Updated upstream
         <div class="stack-cell" data-index="06">
-          <h3>Eletrônica</h3>
-=======
-        <div class="stack-cell">
           <h3 data-i18n="stackElectronics">Eletrônica</h3>
->>>>>>> Stashed changes
           <div class="tags">
             <span class="tag">C++</span><span class="tag">PLC</span><span class="tag">ESP32</span><span class="tag">Microcontroladores</span>
           </div>
@@ -185,13 +146,8 @@
 
   <section id="experiencia">
     <div class="wrap">
-<<<<<<< Updated upstream
-      <p class="eyebrow">git log --career</p>
-      <h2 class="section-title">Trajetória profissional</h2>
-=======
-      <p class="eyebrow" data-i18n="expEyebrow">experiência</p>
+      <p class="eyebrow" data-i18n="expEyebrow">git log --career</p>
       <h2 class="section-title" data-i18n="expTitle">Trajetória profissional</h2>
->>>>>>> Stashed changes
       <div class="timeline">
         <article class="tl-item reveal" data-hash="a8f25c">
           <p class="tl-date">Jun 2025 — Presente</p>
@@ -223,17 +179,12 @@
 
   <section id="projetos">
     <div class="wrap">
-<<<<<<< Updated upstream
-      <p class="eyebrow">ls -la ~/projects</p>
-      <h2 class="section-title">Trabalhos recentes</h2>
-=======
-      <p class="eyebrow" data-i18n="projEyebrow">projetos</p>
+      <p class="eyebrow" data-i18n="projEyebrow">ls -la ~/projects</p>
       <h2 class="section-title" data-i18n="projTitle">Trabalhos recentes</h2>
->>>>>>> Stashed changes
       <div class="proj-grid">
         <article class="proj-card proj-featured reveal" data-project="01">
           <div class="proj-top">
-            <div><span class="repo-state">PUBLIC · FEATURED</span><h3>Water Leak Monitoring</h3></div>
+            <div><span class="repo-state" data-i18n="repoFeatured">PUBLIC · FEATURED</span><h3>Water Leak Monitoring</h3></div>
             <a class="proj-link" href="https://github.com/samuelc-01/water-leak-monitoring" target="_blank" rel="noopener">GitHub ↗</a>
           </div>
           <p data-i18n="projDesc1">API em Node.js que processa dados de sensores de vazão de água e os exibe em dashboards configuráveis — projeto que une eletrônica e desenvolvimento web.</p>
@@ -241,7 +192,7 @@
         </article>
         <article class="proj-card reveal" data-project="02">
           <div class="proj-top">
-            <div><span class="repo-state">PUBLIC · FIRMWARE</span><h3>Water Monitor — Hardware</h3></div>
+            <div><span class="repo-state" data-i18n="repoFirmware">PUBLIC · FIRMWARE</span><h3>Water Monitor — Hardware</h3></div>
             <a class="proj-link" href="https://github.com/samuelc-01/Water-monitor-hardware" target="_blank" rel="noopener">GitHub ↗</a>
           </div>
           <p data-i18n="projDesc2">Firmware em C++ para leitura de sensores de vazão em microcontrolador, responsável por capturar e enviar os dados usados no dashboard.</p>
@@ -249,7 +200,7 @@
         </article>
         <article class="proj-card reveal" data-project="03">
           <div class="proj-top">
-            <div><span class="repo-state">PUBLIC · WEB APP</span><h3>Sub Tracker</h3></div>
+            <div><span class="repo-state" data-i18n="repoWebApp">PUBLIC · WEB APP</span><h3>Sub Tracker</h3></div>
             <a class="proj-link" href="https://github.com/samuelc-01/sub-tracker" target="_blank" rel="noopener">GitHub ↗</a>
           </div>
           <p data-i18n="projDesc3">Aplicação para acompanhar assinaturas e gastos recorrentes, com foco em uma interface simples e objetiva.</p>
@@ -257,7 +208,7 @@
         </article>
         <article class="proj-card reveal" data-project="04">
           <div class="proj-top">
-            <div><span class="repo-state">PUBLIC · API</span><h3>Secure API</h3></div>
+            <div><span class="repo-state" data-i18n="repoApi">PUBLIC · API</span><h3>Secure API</h3></div>
             <a class="proj-link" href="https://github.com/samuelc-01/secureAPI" target="_blank" rel="noopener">GitHub ↗</a>
           </div>
           <p data-i18n="projDesc4">API construída em TypeScript com foco em boas práticas de autenticação e segurança de dados.</p>
@@ -270,14 +221,9 @@
   <section id="contato">
     <div class="wrap">
       <div class="contact-box reveal">
-<<<<<<< Updated upstream
-        <p class="contact-command">./contact.exe <span>--channel=direct</span></p>
-        <h2>Vamos construir algo juntos?</h2>
-        <p>Estou disponível para novos projetos freelance e oportunidades full stack. Envie uma mensagem ou me chame nas redes.</p>
-=======
+        <p class="contact-command" data-i18n-html="contactCommand">./contact.exe <span>--channel=direct</span></p>
         <h2 data-i18n="contactTitle">Vamos construir algo juntos?</h2>
         <p data-i18n="contactText">Estou disponível para novos projetos freelance e oportunidades full stack. Envie uma mensagem ou me chame nas redes.</p>
->>>>>>> Stashed changes
         <div class="contact-links">
           <a href="mailto:samuelc.01dev@gmail.com" class="btn btn-primary">samuelc.01dev@gmail.com</a>
           <a href="https://github.com/samuelc-01" target="_blank" rel="noopener" class="btn btn-ghost">GitHub</a>
@@ -290,17 +236,17 @@
 
 <footer>
   <div class="wrap">
-    <span><span data-i18n-html="footerLine">© 2026 Samuel Cristian — feito com HTML, CSS &amp; JS puro.</span></span>
+    <span><span data-i18n-html="footerLine">© 2026 Samuel Cristian</span></span>
     <span>Divinópolis, MG · Brasil</span>
   </div>
 </footer>
 
 <nav class="mobile-dock" aria-label="Navegação móvel">
   <a href="#home" class="dock-link is-active" data-section="home"><span>01</span><b>início</b></a>
-  <a href="#sobre" class="dock-link" data-section="sobre"><span>02</span><b>sobre</b></a>
-  <a href="#stack" class="dock-link" data-section="stack"><span>03</span><b>stack</b></a>
-  <a href="#projetos" class="dock-link" data-section="projetos"><span>04</span><b>projetos</b></a>
-  <a href="#contato" class="dock-link" data-section="contato"><span>05</span><b>contato</b></a>
+  <a href="#sobre" class="dock-link" data-section="sobre"><span>02</span><b data-i18n="mobileDockAbout">sobre</b></a>
+  <a href="#stack" class="dock-link" data-section="stack"><span>03</span><b data-i18n="mobileDockStack">stack</b></a>
+  <a href="#projetos" class="dock-link" data-section="projetos"><span>04</span><b data-i18n="mobileDockProjects">projetos</b></a>
+  <a href="#contato" class="dock-link" data-section="contato"><span>05</span><b data-i18n="mobileDockContact">contato</b></a>
 </nav>
 
 <script src="js/main.js" defer></script>
